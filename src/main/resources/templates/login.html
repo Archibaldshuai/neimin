@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script src="/vendor/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/vendor/sweetalert/dist/sweetalert.css">
+
+
+
+<body style="text-align: center" marginheight="200px">
+<form id="newForm" onsubmit="return false">
+    <div>
+        <input id ="loginName" name="loginName" type="text" placeholder="请输入用户名">
+    </div>
+    <div>
+        <input id="loginPwd" name="loginPwd" type="password" placeholder="请输入密码">
+    </div>
+    <div>
+        <button type="submit" id="btnLogin">登录</button>
+    </div>
+</form>
+<!--<script>-->
+<!--    $('#btnLogin').click(function () {-->
+<!--        sweetAlert("hello");-->
+<!--        -->
+<!--    });-->
+<!--</script>-->
+
+<th:block th:replace="js/login_js"></th:block>
+</body>
+</html>

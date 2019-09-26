@@ -1,0 +1,103 @@
+<script type="text/javascript">
+
+    var Save = function(){
+        return {
+            init: function () {
+                alert("in.....")
+                Save.initSubmit();
+            },
+            initSubmit: function () {
+                var defaultParam = {
+                    formId: "saveForm"
+                }
+
+                // var param = $.extends({},defaultParam);
+                var param = $.extend({},defaultParam);
+
+                // debugger;
+                alert("...." + defaultParam.formId)
+
+                $('#' + defaultParam.formId).submit(function () {
+                    alert('.....');
+                    Save.getSaveData(defaultParam);
+                });
+            }
+
+            ,
+            /**
+             * 从form中获取数据
+             */
+            getSaveData: function (curParam) {
+
+                // var info = $('#' + curParam.formId).serializeArray();
+                // //info:两个Object
+                // var d = {};
+                // //循环
+                // $.each(info, function () {
+                //     d[this.name] = this.value;//this代表当前循环的object  第一次是[username:ddd]
+                // })
+
+                var info = $('#' + curParam.formId).serializeObject();
+
+                Save.sendDataToController(info);
+
+            },
+            /**
+             * 用Ajax
+             * 将数据（param）发送到Controller
+             * @param param ： 需要提交的数据
+             */
+            sendDataToController: function (param) {
+                alert('......sendDataToController');
+                $.ajax({
+                    url:"/save.json",
+                    contentType: "application/json;charset=UTF-8",
+                    type: "post",
+                    data: JSON.stringify(param),
+
+                    success: function (resp) {
+                        console.log('....resp:'+ JSON.stringify(resp) + 'code:' + resp.resultCode);
+
+                        if(resp.resultCode =='200') {
+                            // resp.result;
+                            alert(".....提交成功" + resp.resultCode);
+                            location.href="/school.html";
+                        } else {
+                            alert("修改失败！！")
+                        }
+                    }
+                });
+            }
+        }
+    }();
+
+
+    /**
+     * 页面加载完成后执行
+     */
+    $(document).ready(function () {
+        Save.init();
+    });
+
+
+    /**
+     * 封装从this中取数据的功能
+     * this：代表调用此方法的那个标签（newForm)
+     */
+    $.fn.serializeObject = function () {
+        var o = {};//放数据用的
+
+        var a = this.serializeArray();
+        $.each(a,function () {
+            if(o[this.name]) {
+                if(!o[this.name].push) {
+                    o[this.name] = this.value;
+                }
+                o[this.name].push(this.value || '')
+            } else {
+                o[this.name] = (this.value || '')
+            }
+        });
+        return o;
+    }
+</script>

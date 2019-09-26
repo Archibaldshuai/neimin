@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑</title>
+</head>
+<body style="text-align: center">
+<div style="font-size: 30px">
+    页面编辑
+</div>
+<form id="saveForm" onsubmit="return false">
+    <div>
+    名称* <input type="text" name="name"><br>
+    </div>
+    <div>
+    排名* <input type="text" name="seq"><br>
+    </div>
+    <div>
+    分数* <input type="text" name="score"><br>
+    </div>
+    <div>
+    等级* <input type="text" name="level"><br>
+    </div>
+    <div>
+    备注* <input type="text" name="remark"><br>
+    </div>
+    <div>
+        <button type="submit" name="btn" id="btn_save" >保存</button>
+    </div>
+
+</form>
+<th:block th:replace="common/include"></th:block>
+<th:block th:replace="common/link"></th:block>
+<th:block th:replace="/js/save_js"></th:block>
+</body>
+</html>

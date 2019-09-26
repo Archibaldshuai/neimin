@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zpark.neimin.first.dao.SchoolMapper">
+    <select id="getSchoolData"  parameterType="com.zpark.neimin.first.common.BaseModelExample" resultType="com.zpark.neimin.first.model.School">
+            select * from school limit #{rowIndex} , #{pageSize}
+</select>
+    <update id="updateSchool" parameterType="com.zpark.neimin.first.model.School" >
+        update school set school.name=#{name}, seq = #{seq}, score = #{score} ,level = #{level},remark = #{remark}where school.id = #{id};
+    </update>
+</mapper>

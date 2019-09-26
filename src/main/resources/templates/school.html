@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Angle - Bootstrap Admin Template</title>
+    <th:block th:replace="common/meta"></th:block>
+    <th:block th:replace="common/link"></th:block>
+    <th:block th:replace="common/include"></th:block>
+</head>
+
+<body>
+<div class="wrapper">
+    <!-- top navbar-->
+    <th:block th:replace="common/header"></th:block>
+    <!-- sidebar-->
+    <th:block th:replace="common/left"></th:block>
+    <th:block th:replace="common/container"></th:block>
+    <th:block th:replace="common/footer"></th:block>
+    <th:block th:replace="js/getSchoolData"></th:block>
+
+
+</div>
+</body>
+</html>
